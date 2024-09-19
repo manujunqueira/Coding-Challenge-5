@@ -7,4 +7,9 @@ const inventory = [
     { name: `Black Coffe`, price: 5, quantity: 10 }
     ];
 
-    
+
+// Task 2 - Create an Orders Array of Order Objects
+
+let orders = []; // Initialize an empty array to store customer orders
+
+// Each order object will have these properties: customerName (string), items (array of objects), status (string)
