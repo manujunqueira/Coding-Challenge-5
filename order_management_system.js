@@ -10,9 +10,7 @@ const inventory = [
 
 // Task 2 - Create an Orders Array of Order Objects
 
-let orders = []; // Initialize an empty array to store customer orders
-
-// Each order object will have these properties: customerName (string), items (array of objects), status (string)
+let orders = []; // Create an empty array to store customer orders
 
 console.log(orders);
 
@@ -33,7 +31,7 @@ function placeOrder(customerName, orderedItem) {
      
     let newOrder = {
         customerName: customerName,
-        item: orderedItem,
+        items: [orderedItem],
         status: 'pending'
     }; //created a new order with the requested object properties 
 
@@ -58,7 +56,7 @@ function calculateOrderTotal(order){
 // Task 5 - Create a Function to Mark an Order as Completed
 
 function completeOrder(customerName){
-    let customerOrder = orders.find(0 => 0.customerName === customerName); //using find method to search for the customer name in the orders array
+    let customerOrder = orders.find(order => order.customerName === customerName); //using find method to search for the customer name in the orders array
 
     if (customerOrder) {
         customerOrder.status = `Completed`;
@@ -68,13 +66,16 @@ function completeOrder(customerName){
     }
 };
 
+//check if function is working
+completeOrder(`Beyonce`); //Output: The order for Beyonce is completed.
+completeOrder(`Markum`); //Output: ERROR: order for Markum was not found.
 
 // Task 6 - Create a Function to Check Pending Orders
 
 
 function checkPendingOrders() {
     
-    let pendingOrders = orders.filter(order => order.status === "Pending"); // Filter the orders array to get only orders with the status "Pending"
+    let pendingOrders = orders.filter(order => order.status === "pending"); // Filter the orders array to get only orders with the status "Pending"
 
     if (pendingOrders.length > 0) { // Check if there are any pending orders
         console.log("Pending Orders:");
@@ -94,3 +95,21 @@ function checkPendingOrders() {
         console.log("No pending orders."); // If no pending orders, log this message
     }
 }
+
+//check function by creating sample orders 
+
+let sampleOrder = { 
+    customerName: 'Jack',
+    items: [{name: 'macchiato', quantity: 2}],
+    status: 'pending'
+};
+
+let sampleOrder2 ={
+    customerName: 'Deja',
+    items: [{name: 'Black Coffee', quantity: 1}],
+    status: 'completed'
+};
+
+orders.push(sampleOrder, sampleOrder2); // add orders to the orders array
+
+checkPendingOrders(); //chack for pending orders
